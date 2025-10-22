@@ -3,6 +3,13 @@ provider "azurerm" {
   subscription_id = "1c8859e3-276f-40f1-afc9-1dd8f8dc18d7"
 }
 
+resource "azurerm_public_ip" "frontend" {
+  name                = "frontend"
+  resource_group_name = "myfirstvm_group"
+  location            = "UK West"
+  allocation_method   = "Static"
+}
+
 resource "azurerm_network_interface" "frontend" {
   name                = "frontend"
   location            = "UK West"
@@ -14,13 +21,6 @@ resource "azurerm_network_interface" "frontend" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = [azurerm_public_ip.frontend.id]
   }
-}
-
-resource "azurerm_public_ip" "frontend" {
-  name                = "frontend"
-  resource_group_name = "myfirstvm_group"
-  location            = "UK West"
-  allocation_method   = "Static"
 }
 
 resource "azurerm_virtual_machine" "frontend" {
