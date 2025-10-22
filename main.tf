@@ -225,7 +225,7 @@ resource "azurerm_virtual_machine" "cart" {
   }
   os_profile {
     computer_name  = "cart"
-    admin_cartname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
@@ -271,7 +271,7 @@ resource "azurerm_virtual_machine" "shipping" {
   }
   os_profile {
     computer_name  = "shipping"
-    admin_shippingname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
@@ -317,7 +317,7 @@ resource "azurerm_virtual_machine" "payment" {
   }
   os_profile {
     computer_name  = "payment"
-    admin_paymentname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
@@ -363,7 +363,7 @@ resource "azurerm_virtual_machine" "dispatch" {
   }
   os_profile {
     computer_name  = "dispatch"
-    admin_dispatchname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
@@ -455,7 +455,7 @@ resource "azurerm_virtual_machine" "mysql" {
   }
   os_profile {
     computer_name  = "mysql"
-    admin_mysqlname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
