@@ -23,6 +23,11 @@ resource "azurerm_network_interface" "frontend" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "example" {
+  network_interface_id      = azurerm_network_interface.frontend.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_virtual_machine" "frontend" {
   name                  = "frontend"
   location              = "UK West"
@@ -61,6 +66,11 @@ resource "azurerm_network_interface" "mongodb" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mongodb.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "mongodb" {
+  network_interface_id      = azurerm_network_interface.mongodb.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 }
 
 resource "azurerm_public_ip" "mongodb" {
@@ -110,6 +120,11 @@ resource "azurerm_network_interface" "catalogue" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "catalogue" {
+  network_interface_id      = azurerm_network_interface.catalogue.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_public_ip" "catalogue" {
   name                = "catalogue"
   resource_group_name = "myfirstvm_group"
@@ -155,6 +170,11 @@ resource "azurerm_network_interface" "user" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.user.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "user" {
+  network_interface_id      = azurerm_network_interface.user.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 }
 
 resource "azurerm_public_ip" "user" {
@@ -204,6 +224,11 @@ resource "azurerm_network_interface" "cart" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "cart" {
+  network_interface_id      = azurerm_network_interface.cart.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_public_ip" "cart" {
   name                = "cart"
   resource_group_name = "myfirstvm_group"
@@ -249,6 +274,11 @@ resource "azurerm_network_interface" "shipping" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.shipping.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "shipping" {
+  network_interface_id      = azurerm_network_interface.shipping.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 }
 
 resource "azurerm_public_ip" "shipping" {
@@ -298,6 +328,11 @@ resource "azurerm_network_interface" "payment" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "payment" {
+  network_interface_id      = azurerm_network_interface.payment.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_public_ip" "payment" {
   name                = "payment"
   resource_group_name = "myfirstvm_group"
@@ -343,6 +378,11 @@ resource "azurerm_network_interface" "dispatch" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.dispatch.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "dispatch" {
+  network_interface_id      = azurerm_network_interface.dispatch.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 }
 
 resource "azurerm_public_ip" "dispatch" {
@@ -392,6 +432,11 @@ resource "azurerm_network_interface" "redis" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "redis" {
+  network_interface_id      = azurerm_network_interface.redis.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_public_ip" "redis" {
   name                = "redis"
   resource_group_name = "myfirstvm_group"
@@ -439,6 +484,11 @@ resource "azurerm_network_interface" "mysql" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "mysql" {
+  network_interface_id      = azurerm_network_interface.mysql.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+}
+
 resource "azurerm_public_ip" "mysql" {
   name                = "mysql"
   resource_group_name = "myfirstvm_group"
@@ -484,6 +534,11 @@ resource "azurerm_network_interface" "rabbitmq" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.rabbitmq.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "rabbitmq" {
+  network_interface_id      = azurerm_network_interface.rabbitmq.id
+  network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 }
 
 resource "azurerm_public_ip" "rabbitmq" {
