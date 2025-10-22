@@ -409,7 +409,7 @@ resource "azurerm_virtual_machine" "redis" {
   }
   os_profile {
     computer_name  = "redis"
-    admin_redisname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
@@ -501,7 +501,7 @@ resource "azurerm_virtual_machine" "rabbitmq" {
   }
   os_profile {
     computer_name  = "rabbitmq"
-    admin_rabbitmqname = "azuser"
+    admin_username = "azuser"
     admin_password = "devops@12345"
   }
   os_profile_linux_config {
