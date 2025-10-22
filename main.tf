@@ -6,7 +6,7 @@ provider "azurerm" {
 resource "azurerm_network_interface" "frontend" {
   name                = "frontend"
   location            = "UK West"
-  resource_group_name = "myfirsvm_group"
+  resource_group_name = "myfirstvm_group"
 
   ip_configuration {
     name                          = "frontend"
@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "frontend" {
 
 resource "azurerm_public_ip" "frontend" {
   name                = "frontend"
-  resource_group_name = "myfirsvm_group"
+  resource_group_name = "myfirstvm_group"
   location            = "UK West"
   allocation_method   = "Static"
 }
@@ -25,7 +25,7 @@ resource "azurerm_public_ip" "frontend" {
 resource "azurerm_virtual_machine" "frontend" {
   name                  = "frontend"
   location              = "UK West"
-  resource_group_name   = "myfirsvm_group"
+  resource_group_name   = "myfirstvm_group"
   network_interface_ids = [azurerm_network_interface.frontend.id]
   vm_size               = "Standard_F1s"
 
