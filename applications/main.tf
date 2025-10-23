@@ -61,18 +61,18 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "null_resource" "ansible" {
-  provisioner "remote-exec" {
-    connection {
-      type        = "ssh"
-      user        = "azuser"
-      password    = "devops@12345"
-      host        = azurerm_network_interface.nic.private_ip_address
-    }
+  connection {
+    type        = "ssh"
+    user        = "azuser"
+    password    = "devops@12345"
+    host        = azurerm_network_interface.nic.private_ip_address
+  }
 
+  provisioner "remote-exec" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
-      "ansible-pull -i localhost -U https://github.com/ng1218/rb-ansible.git -e app_name=${var.name} -e env=dev roboshop.yml"
+      "ansible-pull -i localhost, -U https://github.com/ng1218/rb-ansible.git -e app_name=${var.name} -e env=dev roboshop.yml"
     ]
   }
 }
