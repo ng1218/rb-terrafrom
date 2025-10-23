@@ -1,16 +1,21 @@
-variable "name" {
-  default = [
-    "frontend",
-    "mongodb",
-    "catalogue",
-    "redis",
-    "mysql",
-    "user",
-    "cart",
-    "shipping",
-    "payment",
-    "dispatch"
-  ]
+variable "applications" {
+  default = {
+    frontend  = {}
+    catalogue = {}
+    user      = {}
+    cart      = {}
+    shipping  = {}
+    payment   = {}
+  }
+}
+
+variable "databases" {
+  default = {
+    monogdb = {}
+    mysql = {}
+    redis = {}
+    rabbitmq = {}
+  }
 }
 
 variable "location" {

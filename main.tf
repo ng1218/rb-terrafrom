@@ -1,8 +1,21 @@
 module "applications" {
-  count                     = length(var.name)
-  source                    = "./applications"
+  depends_on                = [module.databases]
+  for_each                  = var.applications
+  source                    = "./components"
   location                  = var.location
-  name                      = var.name[count.index]
+  name                      = each.key
+  resource_group_name       = var.resource_group_name
+  network_security_group_id = var.network_security_group_id
+  storage_image_reference   = var.storage_image_reference
+  subnet_id                 = var.subnet_id
+  zone_name                 = var.zone_name
+}
+
+module "databases" {
+  for_each                  = var.databases
+  source                    = "./components"
+  location                  = var.location
+  name                      = each.key
   resource_group_name       = var.resource_group_name
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
