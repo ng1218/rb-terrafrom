@@ -1,15 +1,6 @@
 variable "name" {
   default = [
-    "frontend",
-    "mongodb",
-    "catalogue",
-    "redis",
-    "mysql",
-    "user",
-    "cart",
-    "shipping",
-    "payment",
-    "dispatch"
+    "frontend"
   ]
 }
 
