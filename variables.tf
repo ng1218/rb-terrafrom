@@ -11,7 +11,7 @@ variable "applications" {
 
 variable "databases" {
   default = {
-    monogdb = {}
+    mongodb = {}
     mysql = {}
     redis = {}
     rabbitmq = {}
