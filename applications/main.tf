@@ -61,14 +61,14 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "null_resource" "ansible" {
-  connection {
-    type        = "ssh"
-    user        = "azuser"
-    password    = "devops@12345"
-    host        = azurerm_network_interface.nic.private_ip_address
-  }
-
   provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "azuser"
+      password    = "devops@12345"
+      host        = azurerm_network_interface.nic.private_ip_address
+    }
+
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
       "sudo pip3.12 install ansible",
