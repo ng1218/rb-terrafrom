@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.4"
+    }
+  }
+}
 resource "azurerm_public_ip" "publicip" {
   name                = var.name
   resource_group_name = var.resource_group_name
@@ -49,6 +57,23 @@ resource "azurerm_virtual_machine" "vm" {
   }
   os_profile_linux_config {
     disable_password_authentication = false
+  }
+}
+
+resource "null_resource" "ansible" {
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "azuser"
+      password    = "devops@12345"
+      host        = azurerm_network_interface.nic.private_ip_address
+    }
+
+    inline = [
+      "udo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible",
+      "ansible-pull -i localhost -U https://github.com/ng1218/rb-ansible.git -e app_name=${app_name} -e env=dev roboshop.yml"
+    ]
   }
 }
 
