@@ -1,3 +1,3 @@
-env       = "dev"
-rg_name   = "roboshop-dev"
+env       = "prod"
+rg_name   = "roboshop-prod"
 location  = "UK West"
