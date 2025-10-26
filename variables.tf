@@ -48,9 +48,3 @@ variable "subscription_id" {
 
 variable "rg_name" {}
 variable "location" {}
-variable "env" {}
-variable "subscription_id" {}
-variable "resource_group_name" {}
-variable "storage_account_name" {}
-variable "container_name" {}
-variable "key" {}
