@@ -23,8 +23,7 @@ module "databases" {
   zone_name                 = var.zone_name
 }*/
 
-module "resource_group" {
-  source = "./modules/resource-group"
-  location  = var.location
-  rg_name   = var.rg_name
+resource "azurerm_resource_group" "create_resource_group" {
+  location    = var.location
+  name        = var.rg_name
 }
