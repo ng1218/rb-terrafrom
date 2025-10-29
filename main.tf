@@ -1,10 +1,17 @@
+module "resource_group" {
+  for_each  = var.rg_name
+  source    = "./modules/resource-group"
+  location  = var.location
+  rg_name   = "${each.key}-${var.env}"
+}
+
 /*module "applications" {
   depends_on                = [module.databases]
   for_each                  = var.applications
-  source                    = ".."
-  location                  = var.location
-  name                      = each.key
-  resource_group_name       = var.resource_group_name
+  source                    = "./modules/vm"
+  location                  = module.resource_group[each.value["rgname"]].location
+  name                      = module.resource_group[each.value["rgname"]].name
+  resource_group_name       = module.resource_group.name
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
   subnet_id                 = var.subnet_id
@@ -13,9 +20,9 @@
 
 module "databases" {
   for_each                  = var.databases
-  source                    = ".."
-  location                  = var.location
-  name                      = each.key
+  source                    = "./modules/vm"
+  location                  = module.resource_group[each.value["rgname"]].location
+  name                      = module.resource_group[each.value["rgname"]].name
   resource_group_name       = var.resource_group_name
   network_security_group_id = var.network_security_group_id
   storage_image_reference   = var.storage_image_reference
@@ -23,8 +30,6 @@ module "databases" {
   zone_name                 = var.zone_name
 }*/
 
-module "resource_group" {
-  source = "./modules/resource-group"
-  location  = var.location
-  rg_name   = var.rg_name
+output "test" {
+  value = module.resource_group
 }

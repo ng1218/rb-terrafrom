@@ -46,5 +46,6 @@ variable "subscription_id" {
   default = "1c8859e3-276f-40f1-afc9-1dd8f8dc18d7"
 }*/
 
-variable "rg_name" {}
+variable "rg_name" {
+}
 variable "location" {}

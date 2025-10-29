@@ -1,29 +1,41 @@
-/*variable "applications" {
+variable "applications" {
   default = {
-    frontend  = {}
-    catalogue = {}
-    user      = {}
-    cart      = {}
-    shipping  = {}
-    payment   = {}
+    frontend  = {
+      rgname = "ukwest"
+    }
+    catalogue = {
+      rgname = "ukwest"
+    }
+    user      = {
+      rgname = "ukwest"
+    }
+    cart      = {
+      rgname = "ukwest"
+    }
+    shipping  = {
+      rgname = "ukwest"
+    }
+    payment   = {
+      rgname = "ukwest"
+    }
   }
 }
 
 variable "databases" {
   default = {
-    mongodb = {}
-    mysql = {}
-    redis = {}
-    rabbitmq = {}
+    mongodb = {
+      rgname = "ukwest"
+    }
+    mysql = {
+      rgname = "ukwest"
+    }
+    redis = {
+      rgname = "ukwest"
+    }
+    rabbitmq = {
+      rgname = "ukwest"
+    }
   }
-}
-
-variable "location" {
-  default = "UK West"
-}
-
-variable "resource_group_name" {
-  default = "myfirstvm_group"
 }
 
 variable "zone_name" {
@@ -44,7 +56,14 @@ variable "network_security_group_id" {
 
 variable "subscription_id" {
   default = "1c8859e3-276f-40f1-afc9-1dd8f8dc18d7"
-}*/
+}
 
-variable "rg_name" {}
+variable "rg_name" {
+  default = {
+    ukwest = {
+      location = "UK West"
+    }
+  }
+}
 variable "location" {}
+variable "env" {}
