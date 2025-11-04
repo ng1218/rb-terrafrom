@@ -16,6 +16,7 @@ module "applications" {
   storage_image_reference   = var.storage_image_reference
   subnet_id                 = var.subnet_id
   zone_name                 = var.zone_name
+  dns_resource_group_name   = var.dns_resource_group_name
 }
 
 module "databases" {
@@ -28,6 +29,7 @@ module "databases" {
   storage_image_reference   = var.storage_image_reference
   subnet_id                 = var.subnet_id
   zone_name                 = var.zone_name
+  dns_resource_group_name   = var.dns_resource_group_name
 }
 /*output "test" {
   value = module.resource_group["ukwest"].name
