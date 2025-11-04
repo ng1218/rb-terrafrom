@@ -29,3 +29,6 @@ module "databases" {
   subnet_id                 = var.subnet_id
   zone_name                 = var.zone_name
 }
+output "test" {
+  value = module.resource_group.name
+}
