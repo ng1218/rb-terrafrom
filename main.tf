@@ -30,5 +30,5 @@ module "databases" {
   zone_name                 = var.zone_name
 }*/
 output "test" {
-  value = module.resource_group.name
+  value = module.resource_group["name"]
 }
