@@ -83,7 +83,7 @@ resource "null_resource" "ansible" {
 resource "azurerm_dns_a_record" "dns_record" {
   name                = "${ var.name }-dev"
   zone_name           = var.zone_name
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.dns_resource_group_name
   ttl                 = 3
   records             = [azurerm_network_interface.nic.private_ip_address]
 }

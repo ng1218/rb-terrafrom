@@ -7,7 +7,7 @@ storage_image_reference   = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7
 network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
 
 subscription_id           = "1c8859e3-276f-40f1-afc9-1dd8f8dc18d7"
-
+dns_resource_group_name   = "myfirstvm_group"
 applications = {
     frontend  = {
       rgname = "ukwest"
