@@ -8,4 +8,3 @@ variable "databases" {}
 variable "subscription_id" {}
 variable "rg_name" {}
 variable "dns_resource_group_name" {}
-variable "path" {}
