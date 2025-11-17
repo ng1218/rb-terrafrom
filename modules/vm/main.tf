@@ -53,8 +53,8 @@ resource "azurerm_virtual_machine" "vm" {
   }
   os_profile {
     computer_name  = var.name
-    admin_username = data.vault_generic_secret.roboshop-infra["username"]
-    admin_password = data.vault_generic_secret.roboshop-infra["password"]
+    admin_username = data.vault_generic_secret.roboshop-infra.data["username"]
+    admin_password = data.vault_generic_secret.roboshop-infra.data["password"]
   }
   os_profile_linux_config {
     disable_password_authentication = false
@@ -68,8 +68,8 @@ resource "null_resource" "ansible" {
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = data.vault_generic_secret.roboshop-infra["username"]
-      password    = data.vault_generic_secret.roboshop-infra["password"]
+      user        = data.vault_generic_secret.roboshop-infra.data["username"]
+      password    = data.vault_generic_secret.roboshop-infra.data["password"]
       host        = azurerm_network_interface.nic.private_ip_address
     }
 
