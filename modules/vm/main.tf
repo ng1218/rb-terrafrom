@@ -6,6 +6,7 @@ terraform {
     }
   }
 }
+
 resource "azurerm_public_ip" "publicip" {
   name                = var.name
   resource_group_name = var.resource_group_name
@@ -52,8 +53,8 @@ resource "azurerm_virtual_machine" "vm" {
   }
   os_profile {
     computer_name  = var.name
-    admin_username = "azuser"
-    admin_password = "devops@12345"
+    admin_username = data.vault_generic_secret.roboshop-infra["username"]
+    admin_password = data.vault_generic_secret.roboshop-infra["password"]
   }
   os_profile_linux_config {
     disable_password_authentication = false
@@ -67,8 +68,8 @@ resource "null_resource" "ansible" {
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = "azuser"
-      password    = "devops@12345"
+      user        = data.vault_generic_secret.roboshop-infra["username"]
+      password    = data.vault_generic_secret.roboshop-infra["password"]
       host        = azurerm_network_interface.nic.private_ip_address
     }
 
