@@ -17,6 +17,7 @@ module "applications" {
   subnet_id                 = var.subnet_id
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
+  token                     = var.token
 }
 
 module "databases" {
@@ -30,4 +31,5 @@ module "databases" {
   subnet_id                 = var.subnet_id
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
+  token                     = var.token
 }
