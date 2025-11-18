@@ -31,6 +31,3 @@ module "databases" {
   zone_name                 = var.zone_name
   dns_resource_group_name   = var.dns_resource_group_name
 }
-/*output "test" {
-  value = module.resource_group["ukwest"].name
-}*/
