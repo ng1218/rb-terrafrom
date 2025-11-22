@@ -7,3 +7,4 @@ variable "zone_name" {}
 variable "network_security_group_id" {}
 variable "dns_resource_group_name" {}
 variable "token" {}
+variable "type" {}
