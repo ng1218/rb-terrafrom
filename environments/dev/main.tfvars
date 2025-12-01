@@ -1,13 +1,13 @@
 env                       = "dev"
 zone_name                 = "nareshdevops1218.online"
-subnet_id                 = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/myfirstvm_group/providers/Microsoft.Network/virtualNetworks/myfirstvm-vnet/subnets/default"
+subnet_id                 = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ngresources/providers/Microsoft.Network/virtualNetworks/vnet-ukwest/subnets/snet-ukwest-1"
 
-storage_image_reference   = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/myfirstvm_group/providers/Microsoft.Compute/images/local-devops-practice"
+storage_image_reference   = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ngresources/providers/Microsoft.Compute/images/local-devops-practice"
 
-network_security_group_id = "/subscriptions/1c8859e3-276f-40f1-afc9-1dd8f8dc18d7/resourceGroups/raghuproject_resources/providers/Microsoft.Network/networkSecurityGroups/allow-all-test"
+network_security_group_id = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ngresources/providers/Microsoft.Network/networkSecurityGroups/test-allow-all"
 
-subscription_id           = "1c8859e3-276f-40f1-afc9-1dd8f8dc18d7"
-dns_resource_group_name   = "myfirstvm_group"
+subscription_id           = "ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa"
+dns_resource_group_name   = "ngresources"
 applications = {
     frontend  = {
       rgname = "ukwest"
