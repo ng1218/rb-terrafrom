@@ -5,7 +5,7 @@ module "resource_group" {
   rg_name   = "${each.key}-${var.env}"
 }
 
-module "applications" {
+/*module "applications" {
   depends_on                = [module.databases]
   for_each                  = var.applications
   source                    = "./modules/vm"
@@ -34,4 +34,14 @@ module "databases" {
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
+}*/
+
+/*module "aks" {
+  source        = "./modules/aks"
+  for_each      = var.aks
+  name          = each.key
+}*/
+
+output "rgtest" {
+  value = module.resource_group
 }

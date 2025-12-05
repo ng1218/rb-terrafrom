@@ -9,3 +9,4 @@ variable "subscription_id" {}
 variable "rg_name" {}
 variable "dns_resource_group_name" {}
 variable "token" {}
+variable "aks" {}

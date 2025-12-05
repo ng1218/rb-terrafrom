@@ -49,3 +49,9 @@ rg_name = {
       location = "UK West"
     }
   }
+
+aks = {
+  aks-main-dev = {
+
+  }
+}
