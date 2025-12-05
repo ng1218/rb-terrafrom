@@ -5,6 +5,18 @@ module "resource_group" {
   rg_name   = "${each.key}-${var.env}"
 }
 
+####OUTPUT OF RESOURCE GROUP AS BELOW########
+/*output "rgtest" {
+  value = module.resource_group
+}*/
+
+/*rgtest = {
+  "ukwest" = {
+    "id" = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ukwest-dev"
+    "location" = "ukwest"
+    "name" = "ukwest-dev"
+  }
+}*/
 /*module "applications" {
   depends_on                = [module.databases]
   for_each                  = var.applications
@@ -36,12 +48,11 @@ module "databases" {
   type                      = "db"
 }*/
 
-/*module "aks" {
-  source        = "./modules/aks"
-  for_each      = var.aks
-  name          = each.key
-}*/
-
-output "rgtest" {
-  value = module.resource_group
+module "aks" {
+  source         = "./modules/aks"
+  for_each       = var.aks
+  name           = each.key
+  rg_name        = module.resource_group[each.value["rgname"]].name
+  location       = module.resource_group[each.value["rgname"]].location
 }
+

@@ -52,6 +52,6 @@ rg_name = {
 
 aks = {
   aks-main-dev = {
-
+    rgname = "ukwest"
   }
 }
