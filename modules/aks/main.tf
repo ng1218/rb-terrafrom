@@ -1,7 +1,7 @@
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.name
-  location            = var.rg_name
-  resource_group_name = var.location
+  location            = var.location
+  resource_group_name = var.rg_name
   dns_prefix          = "roboshopdns"
 
   default_node_pool {
