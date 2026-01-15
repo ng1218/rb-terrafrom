@@ -33,7 +33,7 @@ module "resource_group" {
   type                      = "app"
 }*/
 
-/*module "databases" {
+module "databases" {
   for_each                  = var.databases
   source                    = "./modules/vm"
   location                  = module.resource_group[each.value["rgname"]].location
@@ -46,7 +46,7 @@ module "resource_group" {
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
-}*/
+}
 
 module "aks" {
   source         = "./modules/aks"
