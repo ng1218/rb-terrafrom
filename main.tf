@@ -31,7 +31,7 @@ module "resource_group" {
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "app"
-}*/
+}
 
 module "databases" {
   for_each                  = var.databases
@@ -46,7 +46,7 @@ module "databases" {
   dns_resource_group_name   = var.dns_resource_group_name
   token                     = var.token
   type                      = "db"
-}
+}*/
 
 module "aks" {
   source         = "./modules/aks"
