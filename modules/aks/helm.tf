@@ -4,13 +4,14 @@ resource "helm_release" "external-secrets" {
   chart      = "external-secrets"
   namespace   = "roboshop-${var.env}"
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
-
-  set {
-    name  = "create_namespace"
-    value = "true"
-  }
+  set = [
+    {
+      name  = "installCRDs"
+      value = "true"
+    },
+    {
+      name  = "create_namespace"
+      value = "true"
+    }
+  ]
 }
