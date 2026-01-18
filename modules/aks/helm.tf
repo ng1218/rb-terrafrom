@@ -17,10 +17,6 @@ resource "helm_release" "external-secrets" {
     {
       name  = "installCRDs"
       value = "true"
-    },
-    {
-      name  = "create_namespace"
-      value = "true"
     }
   ]
 }
