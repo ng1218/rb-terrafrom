@@ -58,7 +58,7 @@ resource "null_resource" "secret_store" {
         name: vault-token
       data:
         token: ${base64encode(var.token)}
-      SS
+      TF
     KUBE
   }
 }
