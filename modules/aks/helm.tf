@@ -29,7 +29,7 @@ resource "helm_release" "external-secrets" {
   ]
 }
 
-resource "null_resource" "secret_store" {
+resource "null_resource" "SecretStore" {
   depends_on = [
     helm_release.external-secrets
   ]
