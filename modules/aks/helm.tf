@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.4"
+    }
+  }
+}
 resource null_resource "kubeconfig" {
   provisioner "local-exec" {
     command = "az aks get-credentials --name ${var.name} --resource-group ${var.rg_name}"
@@ -20,3 +28,38 @@ resource "helm_release" "external-secrets" {
     }
   ]
 }
+
+resource "null_resource" "secret_store" {
+  depends_on = [
+    helm_release.external-secrets
+  ]
+  provisioner "local-exec" {
+    command = <<KUBE
+      kubectl apply -f <<SS
+      apiVersion: external-secrets.io/v1
+      kind: ClusterSecretStore
+      metadata:
+        name: "roboshop-${var.env}"
+      spec:
+        provider:
+          vault:
+            server: "http://vault.nareshdevops1218.online:8200"
+            path: "roboshop-${var.env}"
+            version: "v2"
+            auth:
+              tokenSecretRef:
+                name: "vault-token"
+                key: "token"
+                namespace: "devops"
+      ---
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: vault-token
+      data:
+        token: ${base64encode(var.token)}
+    SS
+    KUBE
+  }
+}
+
