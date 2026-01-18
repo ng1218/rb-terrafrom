@@ -34,32 +34,31 @@ resource "null_resource" "secret_store" {
     helm_release.external-secrets
   ]
   provisioner "local-exec" {
-    command = <<KUBE
-      kubectl apply -f  - <<TF
-      apiVersion: external-secrets.io/v1
-      kind: ClusterSecretStore
-      metadata:
-        name: "roboshop-${var.env}"
-      spec:
-        provider:
-          vault:
-            server: "http://vault.nareshdevops1218.online:8200"
-            path: "roboshop-${var.env}"
-            version: "v2"
-            auth:
-              tokenSecretRef:
-                name: "vault-token"
-                key: "token"
-                namespace: "devops"
-      ---
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: vault-token
-      data:
-        token: ${base64encode(var.token)}
-      TF
-    KUBE
+    command = <<TF
+kubectl apply -f  - <<KUBE
+apiVersion: external-secrets.io/v1
+kind: SecretStore
+metadata:
+  name: vault-backend
+spec:
+  provider:
+    vault:
+      server: "http://vault.nareshdevops1218.online:8200"
+      path: "roboshop-dev"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          key: "token"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token
+data:
+  token: aHZzLlNUSzA0NW5xczhXWUtZS2pHTkp6a3JEMw==
+KUBE
+TF
   }
 }
 
