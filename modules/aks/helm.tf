@@ -35,7 +35,7 @@ resource "null_resource" "secret_store" {
   ]
   provisioner "local-exec" {
     command = <<KUBE
-      kubectl apply -f <<SS
+      kubectl apply -f <<TF
       apiVersion: external-secrets.io/v1
       kind: ClusterSecretStore
       metadata:
@@ -58,7 +58,7 @@ resource "null_resource" "secret_store" {
         name: vault-token
       data:
         token: ${base64encode(var.token)}
-    SS
+      SS
     KUBE
   }
 }
