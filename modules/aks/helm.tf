@@ -37,7 +37,7 @@ resource "null_resource" "secret_store" {
     command = <<TF
 kubectl apply -f  - <<KUBE
 apiVersion: external-secrets.io/v1
-kind: SecretStore
+kind: ClusterSecretStore
 metadata:
   name: vault-backend
 spec:
@@ -50,6 +50,7 @@ spec:
         tokenSecretRef:
           name: "vault-token"
           key: "token"
+          namespace: "devops"
 ---
 apiVersion: v1
 kind: Secret
