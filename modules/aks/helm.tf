@@ -29,7 +29,7 @@ resource "helm_release" "external-secrets" {
   ]
 }
 
-resource "null_resource" "SecretStore" {
+resource "null_resource" "secretstore" {
   depends_on = [
     helm_release.external-secrets
   ]
@@ -56,6 +56,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: vault-token
+  namespace: devops
 data:
   token: ${base64encode(var.token)}
 KUBE
