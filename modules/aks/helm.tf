@@ -39,12 +39,12 @@ kubectl apply -f  - <<KUBE
 apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
 metadata:
-  name: vault-backend
+  name: "roboshop-${var.env}"
 spec:
   provider:
     vault:
       server: "http://vault.nareshdevops1218.online:8200"
-      path: "roboshop-dev"
+      path: "roboshop-${var.env}"
       version: "v2"
       auth:
         tokenSecretRef:
@@ -57,7 +57,7 @@ kind: Secret
 metadata:
   name: vault-token
 data:
-  token: aHZzLlNUSzA0NW5xczhXWUtZS2pHTkp6a3JEMw==
+  token: ${base64encode(var.token)}
 KUBE
 TF
   }
