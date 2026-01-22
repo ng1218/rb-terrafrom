@@ -53,5 +53,19 @@ rg_name = {
 aks = {
   aks-main-dev = {
     rgname = "ukwest"
+    default_node_pool = {
+      vm_size = "Standard_D2ls_v5"
+      node_count = 1
+    }
+    app_node_pool = {
+      roboshop = {
+        vm_size = "Standard_D2ls_v5"
+        node_count = 1
+        min_count = 1
+        max_count = 10
+        auto_scaling_enabled = true
+      }
+    }
+
   }
 }

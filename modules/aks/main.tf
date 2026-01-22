@@ -6,9 +6,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   default_node_pool {
     name       = "default"
-    node_count = 1
-    vm_size    = "Standard_D2ls_v5"
-    vnet_subnet_id = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ngresources/providers/Microsoft.Network/virtualNetworks/vnet-ukwest/subnets/snet-ukwest-1"
+    node_count = var.default_node_pool["node_count"]
+    vm_size    = var.default_node_pool["vm_size"]
+    vnet_subnet_id = var.subnet_id
   }
 
   identity {
@@ -21,6 +21,17 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   aci_connector_linux {
-    subnet_name = "/subscriptions/ddffee8a-e239-4aa1-b7e0-b88ff5a2f9aa/resourceGroups/ngresources/providers/Microsoft.Network/virtualNetworks/vnet-ukwest/subnets/snet-ukwest-1"
+    subnet_name = var.subnet_id
   }
+}
+
+resource "azurerm_kubernetes_cluster_node_pool" "app" {
+  for_each              = var.app_node_pool
+  name                  = each.key
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vm_size               = each.value["vm_size"]
+  node_count            = each.value["min_count"]
+  auto_scaling_enabled  = each.value["auto_scaling_enabled"]
+  min_count             = each.value["max_count"]
+  max_count             = each.value["min_count"]
 }

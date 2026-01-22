@@ -56,5 +56,8 @@ module "aks" {
   location       = module.resource_group[each.value["rgname"]].location
   env            = var.env
   token          = var.token
+  subnet_id      = var.subnet_id
+  app_node_pool  = var.app_node_pool
+  default_node_pool = var.default_node_pool
 }
 
