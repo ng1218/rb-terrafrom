@@ -29,6 +29,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   for_each              = var.app_node_pool
   name                  = each.key
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vnet_subnet_id        = var.subnet_id
   vm_size               = each.value["vm_size"]
   node_count            = each.value["min_count"]
   auto_scaling_enabled  = each.value["auto_scaling_enabled"]
