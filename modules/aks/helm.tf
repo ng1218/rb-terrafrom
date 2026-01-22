@@ -7,6 +7,10 @@ terraform {
   }
 }
 resource null_resource "kubeconfig" {
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
+
   provisioner "local-exec" {
     command = "az aks get-credentials --name ${var.name} --resource-group ${var.rg_name}"
   }
