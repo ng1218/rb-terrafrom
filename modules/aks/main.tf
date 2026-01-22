@@ -32,6 +32,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   vm_size               = each.value["vm_size"]
   node_count            = each.value["min_count"]
   auto_scaling_enabled  = each.value["auto_scaling_enabled"]
-  min_count             = each.value["max_count"]
-  max_count             = each.value["min_count"]
+  min_count             = each.value["min_count"]
+  max_count             = each.value["max_count"]
 }
