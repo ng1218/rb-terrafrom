@@ -66,6 +66,5 @@ aks = {
         auto_scaling_enabled = true
       }
     }
-
   }
 }
