@@ -57,7 +57,7 @@ module "aks" {
   env            = var.env
   token          = var.token
   subnet_id      = var.subnet_id
-  app_node_pool  = var.app_node_pool
-  default_node_pool = var.default_node_pool
+  app_node_pool  = each.value["app_node_pool"]
+  default_node_pool = each.value["default_node_pool"]
 }
 
