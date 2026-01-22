@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "app" {
+resource "azurerm_kubernetes_cluster_node_pool" "main" {
   for_each              = var.app_node_pool
   name                  = each.key
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id

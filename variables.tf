@@ -10,5 +10,3 @@ variable "rg_name" {}
 variable "dns_resource_group_name" {}
 variable "token" {}
 variable "aks" {}
-variable "default_node_pool" {}
-variable "app_node_pool" {}
