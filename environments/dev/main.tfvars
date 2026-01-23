@@ -60,7 +60,7 @@ aks = {
     app_node_pool = {
       roboshop = {
         vm_size = "Standard_D2ls_v5"
-        min_count = 1
+        min_count = 3
         max_count = 10
         auto_scaling_enabled = true
       }
