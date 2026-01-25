@@ -64,7 +64,7 @@ aks = {
         max_count = 10
         auto_scaling_enabled = true
         node_labels = {
-          project/name = "roboshop"
+          "project/name" = "roboshop"
         }
       }
     }
