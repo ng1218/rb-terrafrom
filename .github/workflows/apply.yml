@@ -4,8 +4,8 @@ jobs:
   TerraformApply:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v4
       - name: Terraform Apply
-          - uses: actions/checkout@v4
         with:
           url: http://vault.nareshdevops1218.online:8200/
           vault_token: ${{ secrets.VAULT_TOKEN }}
